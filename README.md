@@ -54,3 +54,7 @@ Updating a task needs ID of task and new task value
 Get all the entries from database
 ![get_all](https://user-images.githubusercontent.com/60865755/206926177-ff2e19ac-a8a8-43e4-8d4a-c2196c4947ec.PNG)
 
+Test 
+![mix_test](https://user-images.githubusercontent.com/60865755/207050249-36cf4172-2481-4339-a8e1-939cc4847389.PNG)
+
+
