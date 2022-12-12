@@ -23,6 +23,10 @@ be found at <https://hexdocs.pm/todo>.
 commands to Execute the Todo Web App
 '''
 
+if you want to run the test just uncomment import_config "#{config_env()}.exs" from config/config.exs
+
+#run test  - mix test
+
 #to install all dependencies  - mix do deps.get 
 
 #to create database you mention on config/config.exs   - mix ecto.create 
