@@ -9,4 +9,4 @@ config :todo, Todo.Repo,
 config :todo,
   ecto_repos: [Todo.Repo]
 
-# import_config "#{config_env()}.exs"
+import_config "#{config_env()}.exs"
