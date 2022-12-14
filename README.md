@@ -37,11 +37,7 @@ if you want to run the test just uncomment import_config "#{config_env()}.exs" f
 
 This is a first view of Todo Web App.
 
-![view](https://user-images.githubusercontent.com/60865755/206926158-66b1e741-d628-45d8-aa52-69d72ce3249e.PNG)
 
-After Inserting of Data to Database.
-
-![insert](https://user-images.githubusercontent.com/60865755/206926161-7bf35370-294e-4203-809d-925b416f8d5f.PNG)
 
 Deleting of task with its unique ID 
 
@@ -49,12 +45,11 @@ Deleting of task with its unique ID
 
 Updating a task needs ID of task and new task value 
 
-![update](https://user-images.githubusercontent.com/60865755/206926172-31f60d4e-53ac-42e7-81db-89d53a44ee7f.PNG)
 
 Get all the entries from database
 ![get_all](https://user-images.githubusercontent.com/60865755/206926177-ff2e19ac-a8a8-43e4-8d4a-c2196c4947ec.PNG)
 
 Test 
-![mix_test](https://user-images.githubusercontent.com/60865755/207050249-36cf4172-2481-4339-a8e1-939cc4847389.PNG)
+
 
 
