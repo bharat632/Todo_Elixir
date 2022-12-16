@@ -32,7 +32,18 @@ defmodule Todo.Router do
 	get "/update" do
 		conn = Plug.Conn.fetch_query_params(conn)
 		id = (Map.fetch!(conn.params, "task_id"))
- 		task = to_string(Map.fetch!(conn.params, "new_task"))
+ 		task_date = to_string(Map.fetch!(conn.params, "task_date"))
+		task = to_string(Map.fetch!(conn.params, "task"))
+		IO.puts("#{id} and #{task} and #{task_date}")
+    # Todo.TodoSchema.update_task(id , task)
+		body=EEx.eval_file("lib/html/update.html.leex", [task_id: id , task_date: task_date , task: task])
+    send_resp(conn, 200, body)
+	end
+
+	get "/save" do
+		conn = Plug.Conn.fetch_query_params(conn)
+		id = (Map.fetch!(conn.params, "task_id"))
+		task = to_string(Map.fetch!(conn.params, "task"))
 		IO.puts("#{id} and #{task}")
     Todo.TodoSchema.update_task(id , task)
 		body=EEx.eval_file("lib/html/index.html.leex")

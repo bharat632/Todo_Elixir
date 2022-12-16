@@ -1,5 +1,6 @@
 defmodule Todo.TodoSchema do
   use Ecto.Schema
+  import Ecto.Query
 
   schema "todo" do
     field :task , :string
@@ -37,7 +38,8 @@ defmodule Todo.TodoSchema do
   end
 
   def get_all_tasks() do
-    tasks = Todo.TodoSchema |> Todo.Repo.all
+    query = from task in Todo.TodoSchema, order_by: [desc: task.id]
+    Todo.Repo.all(query)
   end
 
 end

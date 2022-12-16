@@ -75,13 +75,12 @@
                     }
 
                     #new-task-submit {
-                      color: #374151 ;
-                      background: #AAB7B8;
+                      color: #CCD1D1 ;
+                      background: #374151;
                       font-size: 1.25rem;
                       font-weight: 700;
                       padding: 5px;
                       border-radius:5px;
-                      background: white;
                       cursor: pointer;
                       transition: 0.4s;
                       margin: 5px;
@@ -89,6 +88,8 @@
 
                     #new-task-submit:hover {
                       opacity: 0.8;
+                      color:#1F2937;
+                      background: #CCD1D1 ;
                     }
 
 
@@ -168,66 +169,27 @@
                       color: crimson;
                     }
 
-                    .popup{
-                      width: 100%;
-                      height: 100%;
-                      display: none;
-                      position: absolute;
-                      top: 0;
-                      justify-content: center;
-                      align-items: center;
+                    a{
+                      text-decoration: none;
+                      padding: 15px 10px 10px 10px;
+                      border-radius: 7px;
+                      margin-right: 10px;
+                      color: #1F2937;
+                      background: #CCD1D1;
+                      font-weight: 40px;
                       text-align: center;
                     }
 
-                    .popup-content{
-                      height: 150px;
-                      width: 500px;
-                      background: #fff;
-                      padding: 20px;
-                      border-radius: 5px;
-                      position: relative;
-                    }
-
-                    .update_input{
-                      margin: 20px auto;
-                      display: block;
-                      width: 50%;
-                      padding: 8px;
-                      border: 1px solid grey;
-                    }
-
-                    .close-btn{
-                      position: absolute;
-                      top: -15px;
-                      right: -15px;
-                      background: #fff;
-                      height: 20px;
-                      width: 20px;
-                      border-radius: 50%;
-                      box-shadow: 6px 6px 29px -4px rgba(0, 0, 0, 0.75);
-                      cursor: pointer;
-                    }
-
-                    p{
-                      font-size: 1.25rem;
-                      font-weight: 700;
-                    }
-
-                    a{
-                      text-decoration: none;
+                    a:hover{
+                      color: white;
+                      background:  #374151;
                     }
 
 
         </style>
 
         <meta http-equip="refresh" content="2" >
-        <script>
-          function update_form(x) {
-            if (x == 0) document.getElementById("popup").style.display = "flex";
-            else document.getElementById("popup").style.display = "none";
-            return;
-          }
-        </script>
+
   </head>
 
   <body>
@@ -239,7 +201,8 @@
 	  			type="text"
 		  		name="new-task-input"
 			  	id="new-task-input"
-  				placeholder="What do you have planned?" />
+  				placeholder="What do you have planned?"
+          required />
 
 	  		<input
 		  		type="submit"
@@ -259,46 +222,26 @@
 
 					        <div class="task">
 						        <div class="content">
-                      <input type="hidden" class="text" name="task_id" value= <%= task.id %> >
-							        <p> <%= task.task %> <input type="text" class="text" value=""  readonly></p>
+							        <p style="color: grey;">
+                        <span style="margin-right: 10px; color: #CB4335; font-size: 25px ; font-family:sans-serif; " >
+                          <b><%= task.id %></b>
+                        </span><b><%= task.task %></b>
+                        <input type="text" class="text" value=""  readonly>
+                      </p>
 
 						        </div>
 						        <div class="actions">
-							        <!-- <button class="edit">Edit</button>
-							        <button class="delete">Delete</button> -->
-							        <!--<input type="submit" id="new-task-submit"  value="Delete" />
-							        <input type="submit" id="new-task-submit" value="Update" />-->
-                      <a href="delete?task_id=<%= task.id %>" class="btn btn-danger" id="new-task-submit" class="btns">Delete</a>
-                      <a onclick="update_form(0)" id="new-task-submit" class="btns" >Update</a>
+                      <a href="delete?task_id=<%= task.id %>"  >Delete</a>
+                      <a href="update?task_id=<%= task.id %>&task_date=<%= task.created_at %>&task=<%= task.task %>" >Update</a>
+
 
 						        </div>
 					        </div>
-
-
-
-                  <div class="popup" id="popup" >
-                    <div class="popup-content">
-                      <form action="update" method="get" >
-
-                        <input  type="hidden" class="text" name="task_id" value= <%= task.id %> >
-                        <input class="update_input" type="text" placeholder="New Task" name="new_task" >
-                        <input
-                        type="submit"
-                        id="new-task-submit"
-                        class="btns"
-                        value="Save" />
-                      </form>
-                      <button id="close-btn" class="close-btn" onclick="update_form(1)" >X</button>
-                    </div>
-                  </div>
-
-
 
               <% end %>
         </div>
       </section>
     </main>
-
 
   </body>
 </html>
