@@ -36,10 +36,10 @@ if you want to run the test just uncomment import_config "#{config_env()}.exs" f
 
 This is a first view of Todo Web App.
 
-![first_view](https://user-images.githubusercontent.com/60865755/207637044-37fb46e4-2133-4860-acaf-5145472ff36b.PNG)
+![first_view](https://user-images.githubusercontent.com/60865755/208177911-1ca58380-3b94-40f1-a9f4-c895a2d6fc5b.PNG)
 
 Updating a task needs ID of task and new task value 
-![update1](https://user-images.githubusercontent.com/60865755/207637081-15673f21-5bfc-42f7-9b60-fd5e38e8050f.PNG)
+![update](https://user-images.githubusercontent.com/60865755/208177925-801744b0-a0d5-4cda-828a-28b3f858b416.PNG)
 
 Test 
 ![test_pass](https://user-images.githubusercontent.com/60865755/207637115-d8d3f4fb-6dd1-48aa-b7a5-58411c13494f.PNG)
