@@ -190,6 +190,16 @@
 
         <meta http-equip="refresh" content="2" >
 
+        <script>
+          function delete_confirm() {
+            confirm("Do you really want to delete this Task.")
+          }
+
+          function task_confirm(){
+            alert("Task added successfully.")
+          }
+        </script>
+
   </head>
 
   <body>
@@ -208,8 +218,9 @@
 		  		type="submit"
 			  	id="new-task-submit"
           class="btns"
-				  value="Add task" />
+				  value="Add task"  />
   		</form>
+
 	  </header>
 
   	<main>
@@ -219,25 +230,33 @@
 			  <div id="tasks">
 
               <%= for task <- Todo.TodoSchema.get_all_tasks do %>
-
 					        <div class="task">
 						        <div class="content">
-							        <p style="color: grey;">
+							        <p style="color: grey;margin-top: 5px">
                         <span style="margin-right: 10px; color: #CB4335; font-size: 25px ; font-family:sans-serif; " >
                           <b><%= task.id %></b>
-                        </span><b><%= task.task %></b>
-                        <input type="text" class="text" value=""  readonly>
+                        </span>
+
+                        <%= if task.status == "Completed" do %>
+                          <b style="text-decoration: line-through;" ><%= task.task %></b><br>
+                          <b style="color: green;" > <%=task.status %> </b>
+                        <% else %>
+                          <b><%= task.task %></b><br>
+                          <b style="color: red;" > <%=task.status %> </b>
+                        <% end %>
+
                       </p>
 
 						        </div>
 						        <div class="actions">
-                      <a href="delete?task_id=<%= task.id %>"  >Delete</a>
+                      <a href="delete?task_id=<%= task.id %>" onclick= "delete_confirm()"  >Delete</a>
                       <a href="update?task_id=<%= task.id %>&task_date=<%= task.created_at %>&task=<%= task.task %>" >Update</a>
+                      <a href="status?task_id=<%= task.id %>&task_status=<%= task.status%>" >mark as Done</a>
 
 
 						        </div>
-					        </div>
 
+					        </div>
               <% end %>
         </div>
       </section>

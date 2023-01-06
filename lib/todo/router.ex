@@ -14,17 +14,29 @@ defmodule Todo.Router do
 	get "/index" do
 		conn = Plug.Conn.fetch_query_params(conn)
  		task = to_string(Map.fetch!(conn.params, "new-task-input"))
-		IO.puts("#{task}")
-    Todo.TodoSchema.add_task(task)
-		body=EEx.eval_file("lib/html/index.html.leex")
-    send_resp(conn, 200, body)
+    if({:ok , _} = Todo.TodoSchema.add_task(task)) do
+			body=EEx.eval_file("lib/html/index.html.leex" , [status: "data_saved"])
+			send_resp(conn, 200, body)
+		else
+			body=EEx.eval_file("lib/html/index.html.leex" ,[status: "data_not_saved"])
+			send_resp(conn, 200, body)
+		end
+
 	end
 
 	get "/delete" do
 		conn = Plug.Conn.fetch_query_params(conn)
  		id = (Map.fetch!(conn.params, "task_id"))
-		IO.puts("#{id}")
     Todo.TodoSchema.delete_task(id)
+		body=EEx.eval_file("lib/html/index.html.leex")
+    send_resp(conn, 200, body)
+	end
+
+	get "/status" do
+		conn = Plug.Conn.fetch_query_params(conn)
+ 		id = (Map.fetch!(conn.params, "task_id"))
+		status = (Map.fetch!(conn.params, "task_status"))
+    Todo.TodoSchema.task_status(id , status)
 		body=EEx.eval_file("lib/html/index.html.leex")
     send_resp(conn, 200, body)
 	end
@@ -35,7 +47,6 @@ defmodule Todo.Router do
  		task_date = to_string(Map.fetch!(conn.params, "task_date"))
 		task = to_string(Map.fetch!(conn.params, "task"))
 		IO.puts("#{id} and #{task} and #{task_date}")
-    # Todo.TodoSchema.update_task(id , task)
 		body=EEx.eval_file("lib/html/update.html.leex", [task_id: id , task_date: task_date , task: task])
     send_resp(conn, 200, body)
 	end
