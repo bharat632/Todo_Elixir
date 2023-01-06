@@ -34,12 +34,18 @@ if you want to run the test just uncomment import_config "#{config_env()}.exs" f
 #to create repo   - mix ecto.migrate
 
 
+
+
+
 This is a first view of Todo Web App.
 
-![first_view](https://user-images.githubusercontent.com/60865755/208177911-1ca58380-3b94-40f1-a9f4-c895a2d6fc5b.PNG)
+![first_view](https://user-images.githubusercontent.com/60865755/211035136-ac36b5f7-265c-4732-9fec-06237933fd29.PNG)
+
+Alert Popup before delete any task
+![delete_alert](https://user-images.githubusercontent.com/60865755/211035144-7a52ce70-ce6c-4d0c-a017-30be7cd577bd.PNG)
 
 Updating a task needs ID of task and new task value 
-![update](https://user-images.githubusercontent.com/60865755/208177925-801744b0-a0d5-4cda-828a-28b3f858b416.PNG)
+![update_page](https://user-images.githubusercontent.com/60865755/211035151-3d9489bb-98e0-46bf-8144-46d1b7d16ef3.PNG)
 
 Test 
 ![test_pass](https://user-images.githubusercontent.com/60865755/207637115-d8d3f4fb-6dd1-48aa-b7a5-58411c13494f.PNG)
